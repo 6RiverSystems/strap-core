@@ -18,6 +18,10 @@
 	artifactoryGroups: [
 	],
 
+	artifactoryBaseUrl: '',
+	artifactoryNpmRepoName: 'npm-local',
+	artifactoryNpmPackageScope: '',
+
 	// Path to custom script to run after bootstrapping
 	customScript: '',
 }
