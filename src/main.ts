@@ -9,7 +9,7 @@ import {AppModule} from './app.module';
 const memoryStore = require('memorystore');
 const MemoryStore = memoryStore(session);
 
-async function bootstrap() {
+export async function bootstrap() {
 	const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
 	app.setBaseViewsDir(__dirname + '/views');

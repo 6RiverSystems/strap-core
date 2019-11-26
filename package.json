@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "license": "MIT",
   "description": "Bootstrap a developer machine.",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
     "build": "tsc --project tsconfig.app.json",
     "build:watch": "npm run build -- --watch",
@@ -17,6 +17,11 @@
     "test:single": "jest",
     "coverage": "open coverage/index.html"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "bin"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/6RiverSystems/strap-core.git"
