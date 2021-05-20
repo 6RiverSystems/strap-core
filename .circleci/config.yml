@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+  sixrs-gke: sixriversystems/sixrs-gke@3
 jobs:
   prep:
     docker:
@@ -11,8 +13,8 @@ jobs:
             - dependency-cache-
 
       - run:
-            name: Install Dependencies
-            command: npm ci
+          name: Install Dependencies
+          command: npm ci
 
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
@@ -65,9 +67,17 @@ jobs:
           path: ./reports
       - store_artifacts:
           path: ./reports
-      - run:
-          name: Report Coverage
-          command: bash <(curl -s https://codecov.io/bash)
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - .
+  coverage:
+    docker:
+      - image: cimg/node:14.17.0
+    steps:
+      - attach_workspace:
+          at: ./
+      - sixrs-gke/codecov
   publish:
     docker:
       - image: circleci/node:10.15.3
@@ -98,6 +108,9 @@ workflows:
           context: 6rs-public-npm
           requires:
             - prep
+      - coverage:
+          requires:
+            - tests
       - publish:
           context: 6rs-public-npm
           requires:
