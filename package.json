@@ -65,7 +65,7 @@
     "@6river/reason-guard": "^3.5.3",
     "@nestjs/common": "6.10.1",
     "@nestjs/core": "6.10.1",
-    "@nestjs/platform-express": "6.10.1",
+    "@nestjs/platform-express": "9.2.1",
     "@nestjs/testing": "6.10.1",
     "@octokit/rest": "^15.9.4",
     "axios": "^0.19.0",
